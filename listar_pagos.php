@@ -19,7 +19,7 @@
     include 'conexion.php';
     
     $sql = "SELECT p.id,c.nombre,p.monto,p.detalle,p.fecha_pago,p.estado FROM pagos p INNER JOIN clientes c ON c.id = p.id_cliente;";
-    $result = $conn->query($sql);
+    $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -41,7 +41,7 @@
         echo "<tr><td colspan='5'>No hay miembros registrados</td></tr>";
     }
 
-    $conn->close();
+    $con->close();
     ?>
 
 </table>
