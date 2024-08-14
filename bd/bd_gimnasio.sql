@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2024 a las 14:23:47
+-- Tiempo de generación: 14-08-2024 a las 16:02:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,21 +41,21 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `ci`, `nombre`, `celular`, `membresia`, `estado`) VALUES
-(1, 1234567, 'Juan Pérez', 789654123, 1, 'activo'),
-(2, 2345678, 'Ana Gómez', 789654124, 2, 'inactivo'),
-(3, 3456789, 'Luis Martínez', 789654125, 3, 'activo'),
+(1, 1234567, 'Juan Editadp', 789654123, 1, 'activo'),
+(2, 2345678, 'Ana Gómez', 789654124, 1, 'inactivo'),
+(3, 3456789, 'Luis Martínez', 789654125, 1, 'activo'),
 (4, 4567890, 'María López', 789654126, 1, 'activo'),
-(5, 5678901, 'Carlos Sánchez', 789654127, 2, 'inactivo'),
-(6, 6789012, 'Sofía Ramírez', 789654128, 3, 'activo'),
+(5, 5678901, 'Carlos Sánchez', 789654127, 1, 'inactivo'),
+(6, 6789012, 'Sofía Ramírez', 789654128, 1, 'activo'),
 (7, 7890123, 'Daniela Fernández', 789654129, 1, 'activo'),
-(8, 8901234, 'José García', 789654130, 2, 'inactivo'),
-(9, 9012345, 'Laura Ruiz', 789654131, 3, 'activo'),
+(8, 8901234, 'José García', 789654130, 1, 'inactivo'),
+(9, 9012345, 'Laura Ruiz', 789654131, 1, 'activo'),
 (10, 1234568, 'Marta González', 789654132, 1, 'activo'),
-(11, 2345679, 'Pedro Moreno', 789654133, 2, 'inactivo'),
-(12, 3456790, 'Lucía Ortega', 789654134, 3, 'activo'),
+(11, 2345679, 'Pedro Moreno', 789654133, 1, 'inactivo'),
+(12, 3456790, 'Lucía Ortega', 789654134, 1, 'activo'),
 (13, 4567891, 'Gabriel Torres', 789654135, 1, 'activo'),
-(14, 5678902, 'Elena Rojas', 789654136, 2, 'inactivo'),
-(15, 6789013, 'Miguel Díaz', 789654137, 3, 'activo');
+(14, 5678902, 'Elena Rojas', 789654136, 1, 'inactivo'),
+(15, 6789013, 'Miguel Díaz', 789654137, 1, 'activo');
 
 -- --------------------------------------------------------
 
@@ -77,21 +77,21 @@ CREATE TABLE `pagos` (
 --
 
 INSERT INTO `pagos` (`id`, `id_cliente`, `monto`, `detalle`, `fecha_pago`, `estado`) VALUES
-(1, 1, 50, '', '2024-08-01', 'Pagado'),
-(2, 2, 30, '', '0000-00-00', 'Pendiente'),
-(3, 3, 45, '', '2024-08-07', 'Pagado'),
-(4, 4, 60, '', '0000-00-00', 'Pendiente'),
-(5, 5, 50, '', '2024-08-11', 'Pagado'),
-(6, 6, 35, '', '0000-00-00', 'Pendiente'),
-(7, 7, 70, '', '2024-08-15', 'Pagado'),
-(8, 8, 25, '', '0000-00-00', 'Pendiente'),
-(9, 9, 55, '', '2024-08-20', 'Pagado'),
-(10, 10, 40, '', '0000-00-00', 'Pendiente'),
-(11, 11, 50, '', '2024-08-25', 'Pagado'),
-(12, 12, 60, '', '0000-00-00', 'Pendiente'),
-(13, 13, 45, '', '2024-08-29', 'Pagado'),
-(14, 14, 30, '', '0000-00-00', 'Pendiente'),
-(15, 15, 65, '', '2024-08-31', 'Pagado');
+(1, 1, 50, 'Membresia', '2024-08-01', 'Pagado'),
+(2, 2, 30, 'Membresia', '0000-00-00', 'Pendiente'),
+(3, 3, 45, 'Membresia', '2024-08-07', 'Pagado'),
+(4, 4, 60, 'Membresia', '0000-00-00', 'Pendiente'),
+(5, 5, 50, 'Membresia', '2024-08-11', 'Pagado'),
+(6, 6, 35, 'Membresia', '0000-00-00', 'Pendiente'),
+(7, 7, 70, 'Membresia', '2024-08-15', 'Pagado'),
+(8, 8, 25, 'Membresia', '0000-00-00', 'Pendiente'),
+(9, 9, 55, 'Membresia', '2024-08-20', 'Pagado'),
+(10, 10, 40, 'Membresia', '0000-00-00', 'Pendiente'),
+(11, 11, 50, 'Membresia', '2024-08-25', 'Pagado'),
+(12, 12, 60, 'Membresia', '0000-00-00', 'Pendiente'),
+(13, 13, 45, 'Membresia', '2024-08-29', 'Pagado'),
+(14, 14, 30, 'Membresia', '0000-00-00', 'Pendiente'),
+(15, 15, 65, 'Membresia', '2024-08-31', 'Pagado');
 
 --
 -- Índices para tablas volcadas
