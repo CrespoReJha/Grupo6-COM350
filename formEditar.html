@@ -1,0 +1,21 @@
+<h1>Editar Cliente</h1>
+<form id="formEditar" action="javascript:editar()">
+    <input type="hidden" id="id" name="id">
+    <label for="ci">CI</label>
+    <input type="text" id="ci" name="ci" required>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <label for="celular">Celular</label>
+    <input type="text" id="celular" name="celular" required>
+    <label for="membresia">Membresia</label>
+    <select id="membresia" name="membresia" required>
+        <option value="1">Normal</option>
+        <option value="2">VIP</option>
+    </select>
+    <label for="estado">Estado</label>
+    <select id="estado" name="estado" required>
+        <option value="activo">Activo</option>
+        <option value="inactivo">Inactivo</option>
+    </select><br>
+    <button type="submit">Guardar</button>
+</form>
