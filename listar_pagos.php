@@ -2,7 +2,6 @@
 
 <div style=" display: flex; align-items: center;">
     <h2 style="margin-right: 100px;">Pagos</h2>
-    <a href=""><button style="background-color: green; color: white; border-radius: 20px; padding: 20px;"> Add </button></a>
 </div>
 
 <table >
@@ -31,11 +30,11 @@
             echo "<td>" . $row["fecha_pago"] . "</td>";
             $color=($row["estado"]=="Pagado")? "style='color: green;border-color: green;' ":"style='color: red;border-color: red;' ";
             echo "<td><span ".$color.">" . $row["estado"] . "</span></td>";
-            echo "<td style='display: flex; '>
-                <a  href='edit_member.php?id=" . $row["id"] . "'><img src='iconos/editar.svg' style='width: 40px; height: 40px; '></a>
-                <a href='delete_member.php?id=" . $row["id"] . "'><img src='iconos/eliminar.svg' style='width: 40px; height: 40px; '></a>
-                </td>";
-            echo "</tr>";
+            // echo "<td style='display: flex; '>
+            //     <a  href='edit_member.php?id=" . $row["id"] . "'><img src='iconos/editar.svg' style='width: 40px; height: 40px; '></a>
+            //     <a href='delete_member.php?id=" . $row["id"] . "'><img src='iconos/eliminar.svg' style='width: 40px; height: 40px; '></a>
+            //     </td>";
+            // echo "</tr>";
         }
     } else {
         echo "<tr><td colspan='5'>No hay miembros registrados</td></tr>";
