@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2024 a las 16:02:57
+-- Tiempo de generación: 18-08-2024 a las 03:57:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,21 +41,46 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `ci`, `nombre`, `celular`, `membresia`, `estado`) VALUES
-(1, 1234567, 'Juan Editadp', 789654123, 1, 'activo'),
+(1, 1234567, 'Juan Perez', 789654123, 2, 'activo'),
 (2, 2345678, 'Ana Gómez', 789654124, 1, 'inactivo'),
 (3, 3456789, 'Luis Martínez', 789654125, 1, 'activo'),
-(4, 4567890, 'María López', 789654126, 1, 'activo'),
-(5, 5678901, 'Carlos Sánchez', 789654127, 1, 'inactivo'),
-(6, 6789012, 'Sofía Ramírez', 789654128, 1, 'activo'),
+(4, 4567890, 'María López', 789654126, 2, 'inactivo'),
+(5, 5678901, 'Carlos Sánchez', 789654127, 1, 'activo'),
+(6, 6789012, 'Sofía Ramírez', 789654128, 1, 'inactivo'),
 (7, 7890123, 'Daniela Fernández', 789654129, 1, 'activo'),
 (8, 8901234, 'José García', 789654130, 1, 'inactivo'),
 (9, 9012345, 'Laura Ruiz', 789654131, 1, 'activo'),
-(10, 1234568, 'Marta González', 789654132, 1, 'activo'),
-(11, 2345679, 'Pedro Moreno', 789654133, 1, 'inactivo'),
-(12, 3456790, 'Lucía Ortega', 789654134, 1, 'activo'),
+(10, 1234568, 'Marta González', 789654132, 1, 'inactivo'),
+(11, 2345679, 'Pedro Moreno', 789654133, 1, 'activo'),
+(12, 3456790, 'Lucía Ortega', 789654134, 1, 'inactivo'),
 (13, 4567891, 'Gabriel Torres', 789654135, 1, 'activo'),
 (14, 5678902, 'Elena Rojas', 789654136, 1, 'inactivo'),
 (15, 6789013, 'Miguel Díaz', 789654137, 1, 'activo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `membresia`
+--
+
+CREATE TABLE `membresia` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `tipo` enum('Mensual','Semanal','Diaria','Anual') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `membresia`
+--
+
+INSERT INTO `membresia` (`id`, `nombre`, `precio`, `tipo`) VALUES
+(1, 'Estudiantes', 100, 'Mensual'),
+(2, 'Universitarios', 150, 'Mensual'),
+(3, 'Adultos Mensual', 180, 'Mensual'),
+(4, 'Adultos Semanal', 80, 'Semanal'),
+(5, 'Adultos Diario', 20, 'Diaria'),
+(6, 'Adultos Anual', 1000, 'Anual');
 
 -- --------------------------------------------------------
 
@@ -101,6 +126,13 @@ INSERT INTO `pagos` (`id`, `id_cliente`, `monto`, `detalle`, `fecha_pago`, `esta
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_membresia` (`membresia`);
+
+--
+-- Indices de la tabla `membresia`
+--
+ALTER TABLE `membresia`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -121,6 +153,12 @@ ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT de la tabla `membresia`
+--
+ALTER TABLE `membresia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
@@ -129,6 +167,12 @@ ALTER TABLE `pagos`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD CONSTRAINT `fk_membresia` FOREIGN KEY (`membresia`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `pagos`
