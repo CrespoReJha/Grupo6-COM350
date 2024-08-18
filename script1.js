@@ -1,13 +1,4 @@
-document.getElementById('pagos').addEventListener('click', function(event) {
-    event.preventDefault();
 
-    mostrarContenido();
-});
-document.getElementById('miembros').addEventListener('click', function(event) {
-    event.preventDefault();
-
-    listarClientes();
-});
 function mostrarContenido() {
     fetch('listar_pagos.php') 
         .then(response => response.text())
@@ -16,7 +7,6 @@ function mostrarContenido() {
         })
         .catch(error => console.error('Error al cargar el contenido:', error));
 }
-
 
 function listarClientes(){
     fetch("listaClientes.html")

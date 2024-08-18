@@ -6,7 +6,7 @@
 
 <table >
     <tr>
-        <th>Nro. de Pago</th>
+        <th>CI</th>
         <th>Cliente</th>
         <th>Monto</th> 
         <th>Detalle</th>  
@@ -17,13 +17,13 @@
     <?php
     include 'conexion.php';
     
-    $sql = "SELECT p.id,c.nombre,p.monto,p.detalle,p.fecha_pago,p.estado FROM pagos p INNER JOIN clientes c ON c.id = p.id_cliente;";
+    $sql = "SELECT c.ci as ci,p.id,c.nombre,p.monto,p.detalle,p.fecha_pago,p.estado FROM pagos p INNER JOIN clientes c ON c.id = p.id_cliente WHERE p.estado='Pendiente';";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row["id"] . "</td>";
+            echo "<td>" . $row["ci"] . "</td>";
             echo "<td>" . $row["nombre"] . "</td>";
             echo "<td>" . $row["monto"] . "</td>";
             echo "<td>" . $row["detalle"] . "</td>";
