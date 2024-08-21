@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-08-2024 a las 03:57:53
+-- Tiempo de generación: 21-08-2024 a las 05:48:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,11 +41,10 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `ci`, `nombre`, `celular`, `membresia`, `estado`) VALUES
-(1, 1234567, 'Juan Perez', 789654123, 2, 'activo'),
-(2, 2345678, 'Ana Gómez', 789654124, 1, 'inactivo'),
-(3, 3456789, 'Luis Martínez', 789654125, 1, 'activo'),
+(1, 1234567, 'Juan Editado', 789654123, 5, 'activo'),
+(3, 3456789, 'Luis Martínez', 789654125, 2, 'activo'),
 (4, 4567890, 'María López', 789654126, 2, 'inactivo'),
-(5, 5678901, 'Carlos Sánchez', 789654127, 1, 'activo'),
+(5, 5678901, 'Carlos Sánchez', 789654127, 4, 'activo'),
 (6, 6789012, 'Sofía Ramírez', 789654128, 1, 'inactivo'),
 (7, 7890123, 'Daniela Fernández', 789654129, 1, 'activo'),
 (8, 8901234, 'José García', 789654130, 1, 'inactivo'),
@@ -55,7 +54,11 @@ INSERT INTO `clientes` (`id`, `ci`, `nombre`, `celular`, `membresia`, `estado`) 
 (12, 3456790, 'Lucía Ortega', 789654134, 1, 'inactivo'),
 (13, 4567891, 'Gabriel Torres', 789654135, 1, 'activo'),
 (14, 5678902, 'Elena Rojas', 789654136, 1, 'inactivo'),
-(15, 6789013, 'Miguel Díaz', 789654137, 1, 'activo');
+(15, 6789013, 'Miguel Díaz', 789654137, 1, 'activo'),
+(17, 243624, 'Cliente Nuevo', 83568335, 4, 'activo'),
+(18, 8456835, 'Cliente Nuevo 2', 85463568, 6, 'activo'),
+(19, 0, 'Quasi veritatis quae', 0, 5, 'activo'),
+(20, 134513, 'Sint ea qui quod ess', 1451345, 6, 'activo');
 
 -- --------------------------------------------------------
 
@@ -103,7 +106,6 @@ CREATE TABLE `pagos` (
 
 INSERT INTO `pagos` (`id`, `id_cliente`, `monto`, `detalle`, `fecha_pago`, `estado`) VALUES
 (1, 1, 50, 'Membresia', '2024-08-01', 'Pagado'),
-(2, 2, 30, 'Membresia', '0000-00-00', 'Pendiente'),
 (3, 3, 45, 'Membresia', '2024-08-07', 'Pagado'),
 (4, 4, 60, 'Membresia', '0000-00-00', 'Pendiente'),
 (5, 5, 50, 'Membresia', '2024-08-11', 'Pagado'),
@@ -116,7 +118,11 @@ INSERT INTO `pagos` (`id`, `id_cliente`, `monto`, `detalle`, `fecha_pago`, `esta
 (12, 12, 60, 'Membresia', '0000-00-00', 'Pendiente'),
 (13, 13, 45, 'Membresia', '2024-08-29', 'Pagado'),
 (14, 14, 30, 'Membresia', '0000-00-00', 'Pendiente'),
-(15, 15, 65, 'Membresia', '2024-08-31', 'Pagado');
+(15, 15, 65, 'Membresia', '2024-08-31', 'Pagado'),
+(16, 17, 80, 'Pago de membresia', '2024-08-21', 'Pendiente'),
+(17, 18, 1000, 'Pago de membresia', '2024-08-21', 'Pendiente'),
+(18, 19, 20, 'Pago de membresia', '2024-08-21', 'Pendiente'),
+(19, 20, 1000, 'Pago de membresia', '2024-08-21', 'Pagado');
 
 --
 -- Índices para tablas volcadas
@@ -150,7 +156,7 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `membresia`
@@ -162,23 +168,17 @@ ALTER TABLE `membresia`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `fk_membresia` FOREIGN KEY (`membresia`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  ADD CONSTRAINT `fk_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
