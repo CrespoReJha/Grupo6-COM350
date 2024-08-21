@@ -44,7 +44,7 @@ header {
     position: fixed;
     width: 100%;
     height: 100px;
-    background-color: darkblue;
+    background-color: #2e4057;
     text-align: center;
     color: #f4f4f4;
 
@@ -59,7 +59,7 @@ header {
     margin-top: 100px;
     position: fixed;
     width: 15%;
-    background-color: darkblue;
+    background-color: #2e4057;
     color: #fff;
     padding: 20px;
     height: 100vh; 
@@ -111,8 +111,8 @@ header h1{
 button {
     background-color: #4CAF50;
     color:white;
-    padding: 10px 20px;
-    border: none;
+    border: 2px solid #4CAF50;
+    padding: 9px 19px;
     border-radius: 4px;
     cursor: pointer;
 
@@ -136,10 +136,28 @@ input {
     border-radius: 4px;
 }
 
+#buscador{
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+button.cancelar{
+    background-color: transparent;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+#buscador{
+    margin-bottom: 30px;
 }

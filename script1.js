@@ -22,7 +22,7 @@ function mostrarClientes(){
     .then((response) => response.text())
     .then((data) => {
         clientes = JSON.parse(data);
-        console.log(clientes);
+        //console.log(clientes);
         cuerpoTabla = document.getElementById("clientes");
         clientes.forEach(cliente => {
             fila = document.createElement("tr");
@@ -34,6 +34,7 @@ function mostrarClientes(){
             <td>${cliente.estado}</td>
             <td>
                 <button onclick="buscarCliente(${cliente.id})">Editar</button>
+                ${cliente.estado == 'inactivo' ? '<button id="btn_eliminar" onclick="eliminarCliente(' + cliente.id + ')" class="cancelar">Eliminar</button>' : ''}
             </td>
             `;
             cuerpoTabla.appendChild(fila);
@@ -42,7 +43,7 @@ function mostrarClientes(){
 }
 
 function buscarCliente(id){
-    fetch("formEditar.html")
+    fetch("formEditar.php")
     .then((response) => response.text())
     .then((data) => {
         document.getElementById("contenido").innerHTML = data;
@@ -72,4 +73,70 @@ function editar(){
         console.log(data);
         listarClientes();
     });
+}
+
+function cancelarEdicion(){
+    listarClientes();
+}
+
+function nuevoCliente(){
+    console.log("Nuevo cliente");
+    fetch("formNuevo.php")
+    .then((response) => response.text())
+    .then((data) => {
+        document.getElementById("contenido").innerHTML = data;
+        cambiarPago();
+    });
+}
+
+function insertarCliente(){
+    var formulario = new FormData(document.getElementById("formNuevo"));
+    fetch("insertarCliente.php", {
+        method: "POST",
+        body: formulario
+    })
+    .then((response) => response.text())
+    .then((data) => {
+        console.log(data);
+        listarClientes();
+    });
+}
+function cambiarPago(){
+    var selectMembresia = document.getElementById("membresia");
+    selectMembresia.addEventListener("change", function() {
+        //console.log(selectMembresia.value);
+        fetch("obtenerMembresias.php")
+        .then((response) => response.text())
+        .then((data) => {
+            //console.log(data);
+            membresias = JSON.parse(data);
+            //console.log(membresias);
+            for (let i = 0; i < membresias.length; i++) {
+                console.log(membresias[i].nombre);
+                if(membresias[i].id == selectMembresia.value){
+                    document.getElementById("pago").innerHTML = "Monto a Pagar: " + membresias[i].precio + " Bs.";
+                }
+            }
+        });
+    });
+}
+
+function eliminarCliente(id) {
+    if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
+        var formData = new FormData();
+        formData.append("id", id);
+
+        fetch("eliminarCliente.php", {
+            method: "POST",
+            body: formData
+        })
+        .then((response) => response.text())
+        .then((data) => {
+            console.log(data);
+            listarClientes(); // Recargar la lista de clientes
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 include("conexion.php");
 
-$sql = "SELECT c.id as id, ci, c.nombre as nombre, celular, m.nombre as membresia, estado FROM clientes c INNER JOIN membresia m ON c.membresia = m.id";
+$sql = "SELECT id, nombre, precio, tipo FROM membresia";
 
 $result = $con->query($sql);
 $datos = array();
